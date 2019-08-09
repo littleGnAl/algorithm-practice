@@ -3,9 +3,18 @@
  */
 public class Fibonacci {
     public int fibonacci(int n) {
-        if (n == 0) return 0;
-        if (n == 1) return 1;
-        return fibonacci(n - 1) + fibonacci(n - 2);
+        if (n <= 1) return n;
+
+        int fn1 = 0;
+        int fn2 = 1;
+        int result = 1;
+        for (int i = 2; i <= n; i++) {
+            result = fn1 + fn2;
+            fn1 = fn2;
+            fn2 = result;
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {
