@@ -13,12 +13,13 @@ public class BinaryNumberOf1 {
     }
 
     public static void main(String[] args) {
+        // 0
         System.out.println(new BinaryNumberOf1().NumberOf1(0));
         // 1
         System.out.println(new BinaryNumberOf1().NumberOf1(1));
         // 32
         System.out.println(new BinaryNumberOf1().NumberOf1(-1));
-        // 0
+        // 1
         System.out.println(new BinaryNumberOf1().NumberOf1(-2147483648));
     }
 }
