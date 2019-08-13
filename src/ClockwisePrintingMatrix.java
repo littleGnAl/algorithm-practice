@@ -16,25 +16,27 @@ public class ClockwisePrintingMatrix {
             for (int i = minColumnLength; i <= maxColumnLength; i++) {
                 result.add(matrix[minRowLength][i]);
             }
-            ++minRowLength;
-            if (minRowLength > maxRowLength) break;
 
-            for (int i = minRowLength; i <= maxRowLength; i++) {
+            for (int i = minRowLength + 1; i <= maxRowLength; i++) {
                 result.add(matrix[i][maxColumnLength]);
             }
+
+            if (minRowLength != maxRowLength) {
+                for (int i = maxColumnLength - 1; i >= minColumnLength; i--) {
+                    result.add(matrix[maxRowLength][i]);
+                }
+            }
+
+            if (minColumnLength != maxColumnLength) {
+                for (int i = maxRowLength - 1; i > minRowLength; i--) {
+                    result.add(matrix[i][minColumnLength]);
+                }
+            }
+
+            ++minRowLength;
             --maxColumnLength;
-            if (minColumnLength > maxColumnLength) break;
-
-            for (int i = maxColumnLength; i >= minColumnLength; i--) {
-                result.add(matrix[maxRowLength][i]);
-            }
             --maxRowLength;
-
-            for (int i = maxRowLength; i >= minRowLength; i--) {
-                result.add(matrix[i][minColumnLength]);
-            }
             ++minColumnLength;
-            if (minColumnLength > maxColumnLength) break;
         }
 
         return result;
