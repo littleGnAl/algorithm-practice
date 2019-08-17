@@ -37,14 +37,61 @@ public class MinimumKNumber {
         qSort(input, i, end);
     }
 
+    void heapSort(int[] arr) {
+        int len = arr.length - 1;
+        int beginIndex = (arr.length >> 1) - 1;
+        for (int i = beginIndex; i >= 0; i--) {
+            maxHeapify(arr, i, len);
+        }
+
+        for (int i = len; i > 0; i--) {
+            swap(arr,0, i);
+            maxHeapify(arr, 0, i - 1);
+        }
+    }
+
+    void swap(int[] arr, int i, int j) {
+        int t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+
+    void maxHeapify(int[] arr, int index, int len) {
+        int li = (index << 1) + 1;
+        int ri = li + 1;
+        int cMax = li;
+        if (li > len) return;
+        if (ri <= len && arr[ri] > arr[li]) {
+            cMax = ri;
+        }
+        if (arr[cMax] > arr[index]) {
+            swap(arr, cMax, index);
+            maxHeapify(arr, cMax, len);
+        }
+    }
+
     public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
         ArrayList<Integer> result = new ArrayList<>();
-        if (input == null || input.length == 0 || k > input.length) return result;
+        if (input == null || input.length == 0 || k <= 0 || k > input.length) return result;
 
-        qSort(input, 0, input.length - 1);
+        int[] numbers = new int[k];
+        System.arraycopy(input, 0, numbers, 0, k);
 
-        for (int i = 0; i < k; i++) {
-            result.add(input[i]);
+        int len = numbers.length - 1;
+        int beginIndex = (numbers.length >> 1) - 1;
+        for (int i = beginIndex; i >= 0; i--) {
+            maxHeapify(numbers, i, len);
+        }
+
+        for (int i = k; i < input.length; i++) {
+            if (input[i] < numbers[0]) {
+                numbers[0] = input[i];
+                maxHeapify(numbers, 0, len);
+            }
+        }
+
+        for (int i : numbers) {
+            result.add(i);
         }
 
         return result;
