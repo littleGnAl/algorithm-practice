@@ -5,6 +5,14 @@ public class FirstCharAppearOnlyOnce {
     public int FirstNotRepeatingChar(String str) {
         char[] arr = str.toCharArray();
         int index = -1;
+        int appearTimes = 0;
+        char tempChar = arr[0];
+
+        for (int i = 0; i < arr.length;) {
+            if (tempChar == arr[i]) {
+                ++appearTimes;
+            }
+        }
 
         for (int i = 0; i < arr.length;) {
             char temp = arr[i];
