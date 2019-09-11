@@ -4,34 +4,25 @@
 public class FirstCharAppearOnlyOnce {
     public int FirstNotRepeatingChar(String str) {
         char[] arr = str.toCharArray();
-        int index = -1;
-        int appearTimes = 0;
-        char tempChar = arr[0];
+        int[] hashArr = new int['z' + 1];
 
-        for (int i = 0; i < arr.length;) {
-            if (tempChar == arr[i]) {
-                ++appearTimes;
+        for (char c : arr) {
+            hashArr[c]++;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            if (hashArr[arr[i]] == 1) {
+                return i;
             }
         }
 
-        for (int i = 0; i < arr.length;) {
-            char temp = arr[i];
+        return -1;
+    }
 
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] == ' ')
-                    continue;
-
-                if (temp == arr[j]) {
-                    arr[j] = ' ';
-                    if (arr[i] != ' ') {
-                        arr[i] = ' ';
-                    }
-                }
-
-            }
-        }
-
-
-        return 0;
+    public static void main(String[] args) {
+        System.out.println(new FirstCharAppearOnlyOnce().FirstNotRepeatingChar("abcDabc"));
+        System.out.println(new FirstCharAppearOnlyOnce().FirstNotRepeatingChar("google"));
+        System.out.println(new FirstCharAppearOnlyOnce().FirstNotRepeatingChar(
+                "NXWtnzyoHoBhUJaPauJaAitLWNMlkKwDYbbigdMMaYfkVPhGZcrEwp"));
     }
 }
