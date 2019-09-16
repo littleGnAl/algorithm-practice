@@ -21,13 +21,50 @@
  */
 public class ReverseOrderInArray {
     public int InversePairs(int[] array) {
-        int total = 0;
+        if (array == null || array.length == 0) return 0;
 
-        for (int i = 0; i < array.length; i++) {
+        return inverseSubPair(array, 0, array.length - 1);
+    }
 
-            for (int j = i + 1; j < array.length; j++) {
+    int inverseSubPair(int[] arr, int start, int end) {
+        if (start >= end) return 0;
+        int mid = (start + end) / 2;
+        int leftCount = inverseSubPair(arr, start, mid);
+        int rightCount = inverseSubPair(arr, mid + 1, end);
+        int i = mid, j = end;
+        int[] copy = new int[end - start + 1];
+        int copyIndex = end - start;
+        int count = 0;
 
+        while (i >= start && j >= mid + 1) {
+            if (arr[i] > arr[j]) {
+                copy[copyIndex--] = arr[i--];
+                count += j - mid;
+                if (count > 1000000007) {
+                    count %= 1000000007;
+                }
+            } else {
+                copy[copyIndex--] = arr[j--];
             }
         }
+
+        while (i >= start) {
+            copy[copyIndex--] = arr[i--];
+        }
+
+        while (j >= mid + 1) {
+            copy[copyIndex--] = arr[j--];
+        }
+
+        for (i = 0; start <= end;) {
+            arr[start++] = copy[i++];
+        }
+
+        return (leftCount + rightCount + count) % 1000000007;
+    }
+
+    public static void main(String[] args) {
+        // 7
+        System.out.println(new ReverseOrderInArray().InversePairs(new int[] {1, 2, 3, 4, 5, 6, 7, 0}));
     }
 }
