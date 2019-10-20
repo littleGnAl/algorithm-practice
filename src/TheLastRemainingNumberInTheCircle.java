@@ -14,7 +14,7 @@ public class TheLastRemainingNumberInTheCircle {
     }
 
     public static void main(String[] args) {
-        // 1
+        // 0
         System.out.println(new TheLastRemainingNumberInTheCircle().LastRemaining_Solution(8, 2));
     }
 }
