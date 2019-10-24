@@ -39,8 +39,6 @@ public class ConvertStringToInteger {
             }
         }
 
-
-
         if (isNegative) {
             sum *= -1;
         }
