@@ -1,9 +1,8 @@
 package leetcode
 
-import leetcode.`53_ Maximum_Subarray`.Solution
-import kotlin.math.max
-
 /**
+ * # 53. Maximum Subarray
+ *
  * Given an integer array `nums`, find the contiguous subarray (containing at least one number) which
  * has the largest sum and return its sum.
  *
@@ -47,7 +46,7 @@ import kotlin.math.max
  * * -2^31 <= nums[i] <= 2^31 - 1
  * ```
  */
-@Suppress("RemoveRedundantQualifierName")
+@Suppress("RemoveRedundantQualifierName", "ClassName")
 class `53_ Maximum_Subarray` {
   class Solution {
     fun maxSubArray(nums: IntArray): Int {
