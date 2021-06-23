@@ -38,7 +38,7 @@ package leetcode
  * ```
  */
 @Suppress("ClassName")
-class `3_Longest_Substring_Without_Repeating_Characters.kt` {
+class `3_Longest_Substring_Without_Repeating_Characters` {
   class Solution {
     fun lengthOfLongestSubstring(s: String): Int {
       val set = mutableSetOf<Char>()
