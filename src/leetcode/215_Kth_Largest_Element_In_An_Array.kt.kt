@@ -28,7 +28,7 @@ package leetcode
  * ```
  */
 @Suppress("ClassName")
-class `215_Kth_Largest_Element_In_An_Array` {
+class `215_Kth_Largest_Element_In_An_Array.kt` {
   class Solution {
     fun findKthLargest(nums: IntArray, k: Int): Int {
       val len = nums.size - 1

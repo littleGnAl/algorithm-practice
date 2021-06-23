@@ -47,7 +47,7 @@ package leetcode
  * ```
  */
 @Suppress("RemoveRedundantQualifierName", "ClassName")
-class `53_ Maximum_Subarray` {
+class `53_ Maximum_Subarray.kt` {
   class Solution {
     fun maxSubArray(nums: IntArray): Int {
       var pre = 0
